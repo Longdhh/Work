@@ -1,0 +1,7 @@
+F:\code\Project\WorkProject\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+F:\code\Project\WorkProject\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+F:\code\Project\WorkProject\Data\bin\Debug\Data.dll.config
+F:\code\Project\WorkProject\Data\bin\Debug\Data.dll
+F:\code\Project\WorkProject\Data\bin\Debug\Data.pdb
+F:\code\Project\WorkProject\Data\obj\Debug\Data.dll
+F:\code\Project\WorkProject\Data\obj\Debug\Data.pdb

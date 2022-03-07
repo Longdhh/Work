@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Work" Class="WorkDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GV5GR2J\SQLEXPRESS;Initial Catalog=Work;Integrated Security=True" SettingsObjectName="Data.Properties.Settings" SettingsPropertyName="WorkConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="category_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_name_en" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="category_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="category_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="category_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="category_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="category_logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="category_alt_logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="category_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="category_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="category_job_category" Member="job_categories" ThisKey="category_id" OtherKey="category_id" Type="job_category" />
+    </Type>
+  </Table>
+  <Table Name="dbo.country" Member="countries">
+    <Type Name="country">
+      <Column Name="country_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="country_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="country_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="country_modfied_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="country_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="country_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="country_flag" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="country_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="country_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="country_employee" Member="employees" ThisKey="country_id" OtherKey="country_id" Type="employee" />
+      <Association Name="country_province" Member="provinces" ThisKey="country_id" OtherKey="country_id" Type="province" />
+      <Association Name="country_company" Member="companies" ThisKey="country_id" OtherKey="country_id" Type="company" />
+    </Type>
+  </Table>
+  <Table Name="dbo.district" Member="districts">
+    <Type Name="district">
+      <Column Name="district_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="district_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="district_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="district_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="district_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="district_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="district_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="district_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="district_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="district_employee" Member="employees" ThisKey="district_id" OtherKey="district_id" Type="employee" />
+      <Association Name="district_ward" Member="wards" ThisKey="district_id" OtherKey="district_id" Type="ward" />
+      <Association Name="district_company" Member="companies" ThisKey="district_id" OtherKey="district_id" Type="company" />
+      <Association Name="province_district" Member="province" ThisKey="province_id" OtherKey="province_id" Type="province" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employee" Member="employees">
+    <Type Name="employee">
+      <Column Name="employee_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="employee_name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="employee_avatar" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="employee_alt_avatar" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="employee_description" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="employee_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="employee_phone_number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="employee_birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="employee_gender" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="employee_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ward_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="district_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="city_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="province_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="employee_years_of_experience" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="employee_last_company" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="employee_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="employee_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="employee_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="country_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="level_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="level_employee" Member="level" ThisKey="level_id" OtherKey="level_id" Type="level" IsForeignKey="true" />
+      <Association Name="country_employee" Member="country" ThisKey="country_id" OtherKey="country_id" Type="country" IsForeignKey="true" />
+      <Association Name="province_employee" Member="province" ThisKey="province_id" OtherKey="province_id" Type="province" IsForeignKey="true" />
+      <Association Name="district_employee" Member="district" ThisKey="district_id" OtherKey="district_id" Type="district" IsForeignKey="true" />
+      <Association Name="ward_employee" Member="ward" ThisKey="ward_id" OtherKey="ward_id" Type="ward" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.home_slide" Member="home_slides">
+    <Type Name="home_slide">
+      <Column Name="home_slide_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="home_slide_name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="home_slide_order_by" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="link" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="home_slide_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="home_slide_created_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="home_slidemodified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="home_slide_modified_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="home_slide_end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="home_slide_is_showing" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="home_slide_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.job" Member="jobs">
+    <Type Name="job">
+      <Column Name="job_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="job_salary" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="job_requirements_vn" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_name_vn" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_description_vn" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="job_requirements_en" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_name_en" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_description_en" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="job_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="category_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="company_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="job_end_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_view_count" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="working_type_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="level_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ward_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="district_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="province_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="country_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="job_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="job_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="job_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="job_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="job_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="job_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="job_job_category" Member="job_categories" ThisKey="job_id" OtherKey="job_id" Type="job_category" />
+      <Association Name="job_job_tag" Member="job_tags" ThisKey="job_id" OtherKey="job_id" Type="job_tag" />
+      <Association Name="job_welfare" Member="welfares" ThisKey="job_id" OtherKey="job_id" Type="welfare" />
+      <Association Name="working_type_job" Member="working_type" ThisKey="working_type_id" OtherKey="working_type_id" Type="working_type" IsForeignKey="true" />
+      <Association Name="level_job" Member="level" ThisKey="level_id" OtherKey="level_id" Type="level" IsForeignKey="true" />
+      <Association Name="company_job" Member="company" ThisKey="company_id" OtherKey="company_id" Type="company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.job_category" Member="job_categories">
+    <Type Name="job_category">
+      <Column Name="job_category_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="job_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="category_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="job_category_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_category_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_category_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_category_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="job_category_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="category_job_category" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" />
+      <Association Name="job_job_category" Member="job" ThisKey="job_id" OtherKey="job_id" Type="job" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.job_tag" Member="job_tags">
+    <Type Name="job_tag">
+      <Column Name="job_tag_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="job_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="tag_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="job_tag_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_tag_created_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="job_tag_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_tag_modified_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="job_tag_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tag_job_tag" Member="tag" ThisKey="tag_id" OtherKey="tag_id" Type="tag" IsForeignKey="true" />
+      <Association Name="job_job_tag" Member="job" ThisKey="job_id" OtherKey="job_id" Type="job" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.language" Member="languages">
+    <Type Name="language">
+      <Column Name="language_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="language_name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="language_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="language_created_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="language_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="language_modified_by" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="language_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[level]" Member="levels">
+    <Type Name="level">
+      <Column Name="level_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="level_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="level_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="level_created_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="level_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="level_modified_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="level_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="level_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="level_employee" Member="employees" ThisKey="level_id" OtherKey="level_id" Type="employee" />
+      <Association Name="level_job" Member="jobs" ThisKey="level_id" OtherKey="level_id" Type="job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.province" Member="provinces">
+    <Type Name="province">
+      <Column Name="province_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="country_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="province_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="province_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="province_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="province_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="province_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="province_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="province_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="province_district" Member="districts" ThisKey="province_id" OtherKey="province_id" Type="district" />
+      <Association Name="province_employee" Member="employees" ThisKey="province_id" OtherKey="province_id" Type="employee" />
+      <Association Name="province_company" Member="companies" ThisKey="province_id" OtherKey="province_id" Type="company" />
+      <Association Name="country_province" Member="country" ThisKey="country_id" OtherKey="country_id" Type="country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.role" Member="roles">
+    <Type Name="role">
+      <Column Name="role_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="role_name" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="role_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="role_created_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="role_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="role_modified_by" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="role_status" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="role_user" Member="users" ThisKey="role_id" OtherKey="role_id" Type="user" />
+    </Type>
+  </Table>
+  <Table Name="dbo.system_config" Member="system_configs">
+    <Type Name="system_config">
+      <Column Name="id" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tag" Member="tags">
+    <Type Name="tag">
+      <Column Name="tag_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tag_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tag_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tag_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="tag_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tag_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tag_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="tag_job_tag" Member="job_tags" ThisKey="tag_id" OtherKey="tag_id" Type="job_tag" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="users">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="user_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="user_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="user_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="user_modfied_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="user_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="role_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="role_user" Member="role" ThisKey="role_id" OtherKey="role_id" Type="role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ward" Member="wards">
+    <Type Name="ward">
+      <Column Name="ward_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="district_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ward_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ward_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ward_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ward_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ward_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ward_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ward_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="ward_employee" Member="employees" ThisKey="ward_id" OtherKey="ward_id" Type="employee" />
+      <Association Name="ward_company" Member="companies" ThisKey="ward_id" OtherKey="ward_id" Type="company" />
+      <Association Name="district_ward" Member="district" ThisKey="district_id" OtherKey="district_id" Type="district" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.welfare" Member="welfares">
+    <Type Name="welfare">
+      <Column Name="welfare_id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="welfare_information" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="welfare_type_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="welfare_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="welfare_created_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="welfare_modified_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="job_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="welfare_type_welfare" Member="welfare_type" ThisKey="welfare_type_id" OtherKey="welfare_type_id" Type="welfare_type" IsForeignKey="true" />
+      <Association Name="job_welfare" Member="job" ThisKey="job_id" OtherKey="job_id" Type="job" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.welfare_type" Member="welfare_types">
+    <Type Name="welfare_type">
+      <Column Name="welfare_type_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="welfare_type_logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="welfare_type_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="welfare_type_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="welfare_type_created_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="welfare_type_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="welfare_type_modified_by" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="welfare_type_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="welfare_type_welfare" Member="welfares" ThisKey="welfare_type_id" OtherKey="welfare_type_id" Type="welfare" />
+    </Type>
+  </Table>
+  <Table Name="dbo.working_type" Member="working_types">
+    <Type Name="working_type">
+      <Column Name="working_type_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="working_type_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_seo_title_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_seo_alias_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_seo_alias_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_type_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="working_type_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="working_type_created_by" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="working_type_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="working_type_modified_by" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="working_seo_description_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="working_seo_description_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="working_type_job" Member="jobs" ThisKey="working_type_id" OtherKey="working_type_id" Type="job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.company" Member="companies">
+    <Type Name="company">
+      <Column Name="company_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="company_meta_keywords" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_alt_logo" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_banner" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_alt_banner" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="company_fax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="company_phone_number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="company_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="company_address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ward_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="district_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="city_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="province_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="country_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="company_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="company_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="company_views" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="company_followers" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="company_is_featured" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="company_description_vn" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="company_name_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="company_seo_title_vn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="company_seo_alias_vn" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="company_description_en" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="company_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="company_seo_title_en" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="company_seo_alias_en" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="company_seo_description_en" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="company_seo_description_vn" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="company_job" Member="jobs" ThisKey="company_id" OtherKey="company_id" Type="job" />
+      <Association Name="country_company" Member="country" ThisKey="country_id" OtherKey="country_id" Type="country" IsForeignKey="true" />
+      <Association Name="province_company" Member="province" ThisKey="province_id" OtherKey="province_id" Type="province" IsForeignKey="true" />
+      <Association Name="district_company" Member="district" ThisKey="district_id" OtherKey="district_id" Type="district" IsForeignKey="true" />
+      <Association Name="ward_company" Member="ward" ThisKey="ward_id" OtherKey="ward_id" Type="ward" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.term_of_service" Member="term_of_services">
+    <Type Name="term_of_service">
+      <Column Name="tos_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tos_title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tos_description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="tos_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tos_created_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tos_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tos_modified_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="tos_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.security" Member="securities">
+    <Type Name="security">
+      <Column Name="security_id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="security_title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="security_description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="security_created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="security_created_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="security_modified_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="security_modified_by" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="security_status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
