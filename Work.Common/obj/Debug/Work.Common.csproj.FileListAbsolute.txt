@@ -1,0 +1,6 @@
+F:\code\Project\WorkProject\Work.Common\bin\Debug\Work.Common.dll
+F:\code\Project\WorkProject\Work.Common\bin\Debug\Work.Common.pdb
+F:\code\Project\WorkProject\Work.Common\obj\Debug\Work.Common.csproj.CoreCompileInputs.cache
+F:\code\Project\WorkProject\Work.Common\obj\Debug\Work.Common.dll
+F:\code\Project\WorkProject\Work.Common\obj\Debug\Work.Common.pdb
+F:\code\Project\WorkProject\Work.Common\obj\Debug\Work.Common.csproj.AssemblyReference.cache

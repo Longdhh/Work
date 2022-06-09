@@ -1,0 +1,16 @@
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Work.Model.dll.config
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Work.Model.dll
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Work.Model.pdb
+F:\code\Project\WorkProject\Work.Model\obj\Debug\Work.Model.csproj.AssemblyReference.cache
+F:\code\Project\WorkProject\Work.Model\obj\Debug\Work.Model.csproj.CoreCompileInputs.cache
+F:\code\Project\WorkProject\Work.Model\obj\Debug\Work.Model.dll
+F:\code\Project\WorkProject\Work.Model\obj\Debug\Work.Model.pdb
+F:\code\Project\WorkProject\Work.Model\bin\Debug\EntityFramework.dll
+F:\code\Project\WorkProject\Work.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\code\Project\WorkProject\Work.Model\bin\Debug\EntityFramework.xml
+F:\code\Project\WorkProject\Work.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+F:\code\Project\WorkProject\Work.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\code\Project\WorkProject\Work.Model\obj\Debug\Work.Model.csproj.CopyComplete
