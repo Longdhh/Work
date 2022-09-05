@@ -33,6 +33,6 @@ namespace WebAPI.Models
         public string created_by { get; set; }
         public DateTime? modified_at { get; set; }
         public string modified_by { get; set; }
-        public bool status { get; set; }
+        public string status { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
                 var model = _categoryService.GetAll(keyword);
 
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x => x.created_by).Skip(page - 1 * pageSize).Take(pageSize).ToList();
+                var query = model.OrderBy(x => x.name).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
                 var responseData = Mapper.Map<List<Category>, List<CategoryViewModel>>(query);
 

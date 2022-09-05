@@ -41,9 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressService.cs" />
     <Compile Include="AnnouncementService.cs" />
+    <Compile Include="BlogCategoryService.cs" />
+    <Compile Include="BlogService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CompanyService.cs" />
+    <Compile Include="CountryService.cs" />
+    <Compile Include="DistrictService.cs" />
     <Compile Include="FunctionService.cs" />
     <Compile Include="PermissionService.cs" />
     <Compile Include="ErrorService.cs" />
@@ -52,10 +57,10 @@
     <Compile Include="LevelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinceService.cs" />
+    <Compile Include="PublicTextService.cs" />
     <Compile Include="SalaryRangeService.cs" />
-    <Compile Include="SecurityService.cs" />
+    <Compile Include="ScaleService.cs" />
     <Compile Include="SystemConfigService.cs" />
-    <Compile Include="TermsOfServiceService.cs" />
     <Compile Include="WelfareTypeService.cs" />
     <Compile Include="WorkingTypeService.cs" />
   </ItemGroup>

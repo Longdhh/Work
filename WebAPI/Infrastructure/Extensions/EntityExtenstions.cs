@@ -13,7 +13,6 @@ namespace WebAPI.Infrastructure.Extensions
             category.name = categoryViewModel.name;
             category.seo_title = categoryViewModel.seo_title;
             category.seo_description = categoryViewModel.seo_description;
-            category.category_logo = categoryViewModel.category_logo;
             category.created_at = categoryViewModel.created_at;
             category.created_by = categoryViewModel.created_by;
             category.modified_at = categoryViewModel.modified_at;
@@ -77,6 +76,17 @@ namespace WebAPI.Infrastructure.Extensions
             salaryRange.status = salaryRangeViewModel.status;
         }
 
+        public static void UpdatePublicText(this PublicText publicText, PublicTextViewModel publicTextViewModel)
+        {
+            publicText.public_text_id = publicTextViewModel.public_text_id;
+            publicText.title = publicTextViewModel.title;
+            publicText.description = publicTextViewModel.description;
+            publicText.created_at = publicTextViewModel.created_at;
+            publicText.created_by = publicTextViewModel.created_by;
+            publicText.modified_at = publicTextViewModel.modified_at;
+            publicText.modified_by = publicTextViewModel.modified_by;
+            publicText.status = publicTextViewModel.status;
+        }
         public static void UpdateLevel(this Level level, LevelViewModel levelViewModel)
         {
             level.level_id = levelViewModel.level_id;
@@ -115,8 +125,6 @@ namespace WebAPI.Infrastructure.Extensions
             company.description = companyViewModel.description;
             company.seo_description = companyViewModel.seo_description;
             company.seo_title = companyViewModel.seo_title;
-            company.address = companyViewModel.address;
-            company.province_id = companyViewModel.province_id;
             company.avatar = companyViewModel.avatar;
             company.banner = companyViewModel.banner;
             company.created_at = companyViewModel.created_at;
@@ -138,12 +146,10 @@ namespace WebAPI.Infrastructure.Extensions
             job.description = jobViewModel.description;
             job.job_end_date = jobViewModel.job_end_date;
             job.job_view_count = jobViewModel.job_view_count;
-            job.job_registed_user = jobViewModel.job_registed_user;
             job.working_type_id = jobViewModel.working_type_id;
             job.level_id = jobViewModel.level_id;
-            job.province_id = jobViewModel.province_id;
-            job.address = jobViewModel.address;
             job.job_requirement = jobViewModel.job_requirement;
+            job.job_registed_user = jobViewModel.job_registed_user;
             job.created_at = jobViewModel.created_at;
             job.created_by = jobViewModel.created_by;
             job.modified_at = jobViewModel.modified_at;
@@ -178,7 +184,7 @@ namespace WebAPI.Infrastructure.Extensions
             jobUser.job_id = jobUserVm.job_id;
             jobUser.Id = jobUserVm.Id;
             jobUser.name = jobUserVm.name;
-            jobUser.phone_number = jobUserVm.name;
+            jobUser.phone_number = jobUserVm.phone_number;
             jobUser.email = jobUserVm.email;
             jobUser.resume = jobUserVm.resume;
         }
@@ -216,6 +222,81 @@ namespace WebAPI.Infrastructure.Extensions
             appUser.modified_by = appUserViewModel.modified_by;
             appUser.created_at = appUserViewModel.created_at;
             appUser.created_by = appUserViewModel.created_by;
+        }
+        public static void UpdateBlog(this Blog blog, BlogViewModel blogVm)
+        {
+            blog.name = blogVm.name;
+            blog.blog_id = blogVm.blog_id;
+            blog.blog_category_id = blogVm.blog_category_id;
+            blog.description = blogVm.description;
+            blog.avatar = blogVm.avatar;
+            blog.seo_alias = blogVm.seo_alias;
+            blog.seo_description = blogVm.seo_description;
+            blog.seo_title = blogVm.seo_title;
+            blog.modified_at = blogVm.modified_at;
+            blog.modified_by = blogVm.modified_by;
+            blog.created_at = blogVm.created_at;
+            blog.created_by = blogVm.created_by;
+            blog.status = blogVm.status;
+        }
+        public static void UpdateBlogCategory(this BlogCategory blogCategory, BlogCategoryViewModel blogCategoryVm)
+        {
+            blogCategory.name = blogCategoryVm.name;
+            blogCategory.blog_category_id = blogCategoryVm.blog_category_id;
+            blogCategory.seo_title = blogCategoryVm.seo_title;
+            blogCategory.seo_alias = blogCategoryVm.seo_alias;
+            blogCategory.seo_description = blogCategoryVm.seo_description;
+            blogCategory.modified_at = blogCategoryVm.modified_at;
+            blogCategory.modified_by = blogCategoryVm.modified_by;
+            blogCategory.created_at = blogCategoryVm.created_at;
+            blogCategory.created_by = blogCategoryVm.created_by;
+            blogCategory.status = blogCategoryVm.status;
+        }
+        public static void UpdateScale(this Scale scale, ScaleViewModel scaleVm)
+        {
+            scale.name = scaleVm.name;
+            scale.scale_id = scaleVm.scale_id;
+            scale.seo_title = scaleVm.seo_title;
+            scale.seo_alias = scaleVm.seo_alias;
+            scale.seo_description = scaleVm.seo_description;
+            scale.modified_at = scaleVm.modified_at;
+            scale.modified_by = scaleVm.modified_by;
+            scale.created_at = scaleVm.created_at;
+            scale.created_by = scaleVm.created_by;
+            scale.status = scaleVm.status;
+        }
+        public static void UpdateAddress(this Address address, AddressViewModel addressVm)
+        {
+            address.name = addressVm.name;
+            address.address_id = addressVm.address_id;
+            address.description = addressVm.description;
+            address.modified_at = addressVm.modified_at;
+            address.modified_by = addressVm.modified_by;
+            address.created_at = addressVm.created_at;
+            address.created_by = addressVm.created_by;
+            address.status = addressVm.status;
+        }
+        public static void UpdateCountry(this Country country, CountryViewModel countryVm)
+        {
+            country.name = countryVm.name;
+            country.country_id = countryVm.country_id;
+            country.flag = countryVm.flag;
+            country.modified_at = countryVm.modified_at;
+            country.modified_by = countryVm.modified_by;
+            country.created_at = countryVm.created_at;
+            country.created_by = countryVm.created_by;
+            country.status = countryVm.status;
+        }
+        public static void UpdateDistrict(this District district, DistrictViewModel districtVm)
+        {
+            district.name = districtVm.name;
+            district.district_id = districtVm.district_id;
+            district.province_id = districtVm.province_id;
+            district.modified_at = districtVm.modified_at;
+            district.modified_by = districtVm.modified_by;
+            district.created_at = districtVm.created_at;
+            district.created_by = districtVm.created_by;
+            district.status = districtVm.status;
         }
     }
 }

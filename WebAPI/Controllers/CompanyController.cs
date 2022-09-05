@@ -35,6 +35,17 @@ namespace WebAPI.Controllers
             });
         }
 
+        [Route("get-all-active")]
+        public HttpResponseMessage GetActive(HttpRequestMessage request)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                var listCompany = _companyService.GetActive();
+                var listCompanyVm = Mapper.Map<List<CompanyViewModel>>(listCompany);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCompanyVm);
+                return response;
+            });
+        }
         [Route("get-all-paging")]
         [HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
@@ -43,6 +54,31 @@ namespace WebAPI.Controllers
             {
                 int totalRow = 0;
                 var model = _companyService.GetAll(keyword);
+
+                totalRow = model.Count();
+                var query = model.OrderBy(x => x.name).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                var responseData = Mapper.Map<List<Company>, List<CompanyViewModel>>(query);
+
+                var paginationSet = new PaginationSet<CompanyViewModel>()
+                {
+                    Items = responseData,
+                    PageIndex = page,
+                    TotalRows = totalRow,
+                    PageSize = pageSize
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
+        [Route("get-all-active-paging")]
+        [HttpGet]
+        public HttpResponseMessage GetAllActive(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                int totalRow = 0;
+                var model = _companyService.GetAllActive(keyword);
 
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.created_by).Skip(page - 1 * pageSize).Take(pageSize).ToList();
@@ -60,7 +96,6 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
-
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage request, CompanyViewModel CompanyVm)
         {

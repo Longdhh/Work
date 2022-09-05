@@ -22,29 +22,28 @@ namespace WebAPI.Controllers
         {
             this._jobService = jobService;
         }
-        [Route("get-all")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        [Route("get-all-active")]
+        public HttpResponseMessage GetActive(HttpRequestMessage request)
         {
             return createHttpResponseMessage(request, () =>
             {
-                var listJob = _jobService.GetAll();
+                var listJob = _jobService.GetActive();
                 var listJobVm = Mapper.Map<List<JobViewModel>>(listJob);
                 HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listJobVm);
                 return response;
             });
         }
-
-        [Route("get-all-paging")]
+        [Route("get-all-pending-and-active-paging")]
         [HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
+        public HttpResponseMessage GetAllPendingAndActive(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
         {
             return createHttpResponseMessage(request, () =>
             {
                 int totalRow = 0;
-                var model = _jobService.GetAll(keyword);
+                var model = _jobService.GetAllActiveAndPending(keyword);
 
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x => x.created_by).Skip(page - 1 * pageSize).Take(pageSize).ToList();
+                var query = model.OrderBy(x => x.created_at).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
                 var responseData = Mapper.Map<List<Job>, List<JobViewModel>>(query);
 
@@ -59,7 +58,31 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
+        [Route("get-all-active-paging")]
+        [HttpGet]
+        public HttpResponseMessage GetAllActive(HttpRequestMessage request, string keyword, int page, int pageSize = 20)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                int totalRow = 0;
+                var model = _jobService.GetAllActive(keyword);
 
+                totalRow = model.Count();
+                var query = model.OrderBy(x => x.job_end_date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                var responseData = Mapper.Map<List<Job>, List<JobViewModel>>(query);
+
+                var paginationSet = new PaginationSet<JobViewModel>()
+                {
+                    Items = responseData,
+                    PageIndex = page,
+                    TotalRows = totalRow,
+                    PageSize = pageSize
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
         [Route("get-all-paging-by-company-id/{Id}")]
         [HttpGet]
         public HttpResponseMessage GetAllByCompanyId(HttpRequestMessage request, string id, int page, int pageSize = 20)
@@ -70,7 +93,7 @@ namespace WebAPI.Controllers
                 var model = _jobService.GetAllByCompanyId(id);
 
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x => x.created_by).Skip(page - 1 * pageSize).Take(pageSize).ToList();
+                var query = model.OrderBy(x => x.created_at).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
                 var responseData = Mapper.Map<List<Job>, List<JobViewModel>>(query);
 
@@ -85,7 +108,31 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
+        [Route("get-all-active-by-company-id/{Id}")]
+        [HttpGet]
+        public HttpResponseMessage GetAllActiveByCompanyId(HttpRequestMessage request, string id, int page, int pageSize = 20)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                int totalRow = 0;
+                var model = _jobService.GetAllActiveByCompanyId(id);
 
+                totalRow = model.Count();
+                var query = model.OrderBy(x => x.created_at).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                var responseData = Mapper.Map<List<Job>, List<JobViewModel>>(query);
+
+                var paginationSet = new PaginationSet<JobViewModel>()
+                {
+                    Items = responseData,
+                    PageIndex = page,
+                    TotalRows = totalRow,
+                    PageSize = pageSize
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
         [Route("get-all-registed-paging-by-job-id/{Id}")]
         [HttpGet]
         public HttpResponseMessage GetAllRegistedByJobId(HttpRequestMessage request, int id, int page, int pageSize = 20)
@@ -96,7 +143,7 @@ namespace WebAPI.Controllers
                 var model = _jobService.GetAllRegistedByJobId(id);
 
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x => x.created_at).Skip(page - 1 * pageSize).Take(pageSize).ToList();
+                var query = model.OrderBy(x => x.created_at).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
                 var responseData = Mapper.Map<List<JobUser>, List<JobUserViewModel>>(query);
 
@@ -111,7 +158,31 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
+        [Route("get-all-registed-paging-by-user-id/{Id}")]
+        [HttpGet]
+        public HttpResponseMessage GetAllRegistedByUserId(HttpRequestMessage request, string id, int page, int pageSize = 20)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                int totalRow = 0;
+                var model = _jobService.GetAllRegistedByUserId(id);
 
+                totalRow = model.Count();
+                var query = model.OrderBy(x => x.created_at).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                var responseData = Mapper.Map<List<JobUser>, List<JobUserViewModel>>(query);
+
+                var paginationSet = new PaginationSet<JobUserViewModel>()
+                {
+                    Items = responseData,
+                    PageIndex = page,
+                    TotalRows = totalRow,
+                    PageSize = pageSize
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
         [Route("add")]
         [HttpPost]
         public HttpResponseMessage Post(HttpRequestMessage request, JobViewModel jobVm)
@@ -131,8 +202,7 @@ namespace WebAPI.Controllers
                     newJob.UpdateJob(jobVm);
                     newJob.created_at = DateTime.Now;
                     newJob.job_view_count = 0;
-                    newJob.job_end_date = DateTime.Now.AddDays(30);
-                    newJob.status = false;
+                    newJob.status = "Inactive";
                     foreach (var item in jobVm.job_categories)
                     {
                         var jobCategory = new JobCategory();
@@ -179,7 +249,28 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
+        [Route("unregister-job")]
+        [HttpDelete]
+        public HttpResponseMessage UnregisterJob(HttpRequestMessage request, int id)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var oldJobUser = _jobService.UnregisterJob(id);
+                    _jobService.SaveChanges();
+                    var responseData = Mapper.Map<JobUser, JobUserViewModel>(oldJobUser);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
 
+                return response;
+            });
+        }
         [Route("update")]
         [HttpPut]
         public HttpResponseMessage Put(HttpRequestMessage request, JobViewModel jobVm)
@@ -224,14 +315,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        [Route("update-status")]
-        public HttpResponseMessage UpdateStatus(HttpRequestMessage request, int id)
+        [Route("send-job")]
+        public HttpResponseMessage SendJob(HttpRequestMessage request, int id)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _jobService.UpdateStatus(id);
+                    _jobService.SendJob(id);
                     _jobService.SaveChanges();
                     return request.CreateResponse(HttpStatusCode.OK, id);
                 }
@@ -246,6 +337,50 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("public-job")]
+        public HttpResponseMessage PublicJob(HttpRequestMessage request, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _jobService.PublicJob(id);
+                    _jobService.SaveChanges();
+                    return request.CreateResponse(HttpStatusCode.OK, id);
+                }
+                catch (Exception dex)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, dex.Message);
+                }
+            }
+            else
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+        }
+        [HttpPut]
+        [Route("unpublic-job")]
+        public HttpResponseMessage UnpublicJob(HttpRequestMessage request, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _jobService.UnpublicJob(id);
+                    _jobService.SaveChanges();
+                    return request.CreateResponse(HttpStatusCode.OK, id);
+                }
+                catch (Exception dex)
+                {
+                    return request.CreateErrorResponse(HttpStatusCode.BadRequest, dex.Message);
+                }
+            }
+            else
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+        }
         [HttpPut]
         [Route("update-registed-count")]
         public HttpResponseMessage UpdateRegistedCount(HttpRequestMessage request, int id)

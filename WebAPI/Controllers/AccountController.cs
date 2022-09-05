@@ -10,7 +10,6 @@ using System.Web.Http;
 using WebAPI.Infrastructure.Core;
 using WebAPI.Infrastructure.Extensions;
 using WebAPI.Models;
-using WebAPI.Providers;
 using Work.Common.Exceptions;
 using Work.Model.Models;
 using Work.Service;
@@ -27,7 +26,7 @@ namespace WebAPI.Controllers
 
         [Route("get-all")]
         [HttpGet]
-        [Permission(Action = "Read", Function = "USER")]
+        //[Permission(Action = "Read", Function = "USER")]
         public HttpResponseMessage GetList(HttpRequestMessage request)
         {
             return createHttpResponseMessage(request, () =>
@@ -47,7 +46,7 @@ namespace WebAPI.Controllers
 
         [Route("get-all-paging")]
         [HttpGet]
-        [Permission(Action = "Read", Function = "USER")]
+        //[Permission(Action = "Read", Function = "USER")]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
         {
             return createHttpResponseMessage(request, () =>
@@ -76,10 +75,41 @@ namespace WebAPI.Controllers
                 return response;
             });
         }
+        [Route("get-all-employee")]
+        [HttpGet]
+        public HttpResponseMessage GetEmployeePaging(HttpRequestMessage request, int page, int pageSize, string filter = null)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                HttpResponseMessage response = null;
+                int totalRow = 0;
+                var role = AppRoleManager.FindByName("JobFinder");
+                var model = AppUserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id));
 
+                if (!string.IsNullOrWhiteSpace(filter))
+                    model = model.Where(x => x.UserName.Contains(filter) || x.name.Contains(filter));
+
+                totalRow = model.Count();
+
+                var data = model.OrderBy(x => x.name).Skip((page - 1) * pageSize).Take(pageSize);
+                IEnumerable<ApplicationUserViewModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<ApplicationUserViewModel>>(data);
+
+                PaginationSet<ApplicationUserViewModel> pagedSet = new PaginationSet<ApplicationUserViewModel>()
+                {
+                    PageIndex = page,
+                    PageSize = pageSize,
+                    TotalRows = totalRow,
+                    Items = modelVm,
+                };
+
+                response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
+
+                return response;
+            });
+        }
         [Route("detail/{id}")]
         [HttpGet]
-        [Permission(Action = "Read", Function = "USER")]
+        //[Permission(Action = "Read", Function = "USER")]
         public async Task<HttpResponseMessage> Details(HttpRequestMessage request, string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -141,7 +171,7 @@ namespace WebAPI.Controllers
         [HttpPut]
         [Route("update")]
         //[Authorize(Roles = "UpdateUser")]
-        [Permission(Action = "Update", Function = "USER")]
+        //[Permission(Action = "Update", Function = "USER")]
         public async Task<HttpResponseMessage> Update(HttpRequestMessage request, ApplicationUserViewModel applicationUserViewModel)
         {
             if (ModelState.IsValid)
@@ -173,10 +203,16 @@ namespace WebAPI.Controllers
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
         }
-
+        /*[HttpPost]
+        [Route("ForgotPassword")]
+        public async Task<HttpResponseMessage> ForgotPassword(HttpRequestMessage request, ApplicationUserViewModel applicationUserViewModel)
+        {
+            if()
+            return applicationUserViewModel;
+        }*/
         [HttpDelete]
         [Route("delete")]
-        [Permission(Action = "Delete", Function = "USER")]
+        //[Permission(Action = "Delete", Function = "USER")]
         public async Task<HttpResponseMessage> Delete(HttpRequestMessage request, string id)
         {
             var appUser = await AppUserManager.FindByIdAsync(id);

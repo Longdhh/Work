@@ -101,3 +101,15 @@ F:\code\Project\WorkProject\Work.UnitTest\obj\Debug\Work.UnitTest.csproj.CoreCom
 F:\code\Project\WorkProject\Work.UnitTest\obj\Debug\Work.UnitTest.csproj.CopyComplete
 F:\code\Project\WorkProject\Work.UnitTest\obj\Debug\Work.UnitTest.dll
 F:\code\Project\WorkProject\Work.UnitTest\obj\Debug\Work.UnitTest.pdb
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\System.Web.Http.Cors.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\System.Web.Http.Owin.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.Owin.Cors.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\System.Web.Cors.dll
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.AspNet.SignalR.Core.pdb
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\System.Web.Http.Cors.xml
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\System.Web.Http.Owin.xml
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.Owin.Cors.xml
+F:\code\Project\WorkProject\Work.UnitTest\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml

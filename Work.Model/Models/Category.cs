@@ -26,9 +26,6 @@ namespace Work.Model.Models
         [MaxLength(200)]
         public string seo_description { get; set; }
 
-        [MaxLength(250)]
-        public string category_logo { get; set; }
-
         public virtual IEnumerable<JobCategory> job_categories { get; set; }
     }
 }

@@ -67,9 +67,14 @@ namespace WebAPI.Controllers
                             {
                                 directory = "/UploadedFiles/HomeSlide/";
                             }
+                            else if (type =="blogimage")
+                            {
+                                directory = "/UploadedFiles/BlogImage";
+                            }
                             else
                             {
                                 directory = "/UploadedFiles/";
+
                             }
                             if (!Directory.Exists(HttpContext.Current.Server.MapPath(directory)))
                             {

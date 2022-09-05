@@ -14,8 +14,9 @@ namespace Work.Service
         Company Delete(string id);
 
         IEnumerable<Company> GetAll();
-
+        IEnumerable<Company> GetActive();
         IEnumerable<Company> GetAll(string keyword);
+        IEnumerable<Company> GetAllActive(string keyword);
 
         Company getById(string id);
 
@@ -55,7 +56,17 @@ namespace Work.Service
             else
                 return _companyRepository.GetAll();
         }
-
+        public IEnumerable<Company> GetAllActive(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+                return _companyRepository.GetMulti(x => (x.name.Contains(keyword) || x.seo_description.Contains(keyword)) && x.status == true);
+            else
+                return _companyRepository.GetMulti(x => x.status == true);
+        }
+        public IEnumerable<Company> GetActive()
+        {
+            return _companyRepository.GetMulti(x => x.status == true);
+        }
         public Company getById(string id)
         {
             return _companyRepository.GetSingleById(id);

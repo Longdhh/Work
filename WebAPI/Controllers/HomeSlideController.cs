@@ -22,7 +22,17 @@ namespace WebAPI.Controllers
         {
             this._homeSlideService = homeSlideService;
         }
-
+        [Route("get-all")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
+        {
+            return createHttpResponseMessage(request, () =>
+            {
+                var listBanner = _homeSlideService.GetAll();
+                var listBannerVm = Mapper.Map<List<HomeSlideViewModel>>(listBanner);
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listBannerVm);
+                return response;
+            });
+        }
         [Route("get-all-paging")]
         [HttpGet]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, string keyword, int page, int pageSize, string filter = null)
@@ -33,7 +43,7 @@ namespace WebAPI.Controllers
                 var model = _homeSlideService.GetAll(keyword);
 
                 totalRow = model.Count();
-                var query = model.OrderByDescending(x => x.created_by).Skip(page - 1 * pageSize).Take(pageSize).ToList();
+                var query = model.OrderBy(x => x.home_slide_name).Skip(page - 1 * pageSize).Take(pageSize).ToList();
 
                 var responseData = Mapper.Map<List<HomeSlide>, List<HomeSlideViewModel>>(query);
 

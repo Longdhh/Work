@@ -7,7 +7,7 @@ using Work.Model.Abstract;
 namespace Work.Model.Models
 {
     [Table("job")]
-    public class Job : Auditable
+    public class Job
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -40,12 +40,7 @@ namespace Work.Model.Models
         public long? job_view_count { get; set; }
         public long? working_type_id { get; set; }
         public long? level_id { get; set; }
-        public long? province_id { get; set; }
-        public string address { get; set; }
         public long job_registed_user { get; set; }
-
-        [ForeignKey("province_id")]
-        public virtual Province province { get; set; }
 
         [ForeignKey("level_id")]
         public virtual Level level { get; set; }
@@ -62,5 +57,12 @@ namespace Work.Model.Models
         public virtual IEnumerable<JobCategory> job_categories { get; set; }
         public virtual IEnumerable<JobUser> job_users { get; set; }
         public virtual IEnumerable<Welfare> welfares { get; set; }
+        public virtual IEnumerable<Address> addresses { get; set; }
+        public DateTime? created_at { get; set; }
+        public string created_by { get; set; }
+        public DateTime? modified_at { get; set; }
+        public string modified_by { get; set; }
+        [MaxLength(20)]
+        public string status { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -99,12 +100,81 @@
     <Compile Include="Migrations\202205261946173_alter-database.Designer.cs">
       <DependentUpon>202205261946173_alter-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206221648316_alter-job.cs" />
+    <Compile Include="Migrations\202206221648316_alter-job.Designer.cs">
+      <DependentUpon>202206221648316_alter-job.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207270448516_add-technology.cs" />
+    <Compile Include="Migrations\202207270448516_add-technology.designer.cs">
+      <DependentUpon>202207270448516_add-technology.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207270451114_delete-technology.cs" />
+    <Compile Include="Migrations\202207270451114_delete-technology.designer.cs">
+      <DependentUpon>202207270451114_delete-technology.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208020421046_alter-sec-and-tos.cs" />
+    <Compile Include="Migrations\202208020421046_alter-sec-and-tos.designer.cs">
+      <DependentUpon>202208020421046_alter-sec-and-tos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208020758320_alter-security-and-tos.cs" />
+    <Compile Include="Migrations\202208020758320_alter-security-and-tos.designer.cs">
+      <DependentUpon>202208020758320_alter-security-and-tos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208040300263_alter-remove-title.cs" />
+    <Compile Include="Migrations\202208040300263_alter-remove-title.designer.cs">
+      <DependentUpon>202208040300263_alter-remove-title.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208080318068_big-update.cs" />
+    <Compile Include="Migrations\202208080318068_big-update.designer.cs">
+      <DependentUpon>202208080318068_big-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208080322094_add-four-tables.cs" />
+    <Compile Include="Migrations\202208080322094_add-four-tables.designer.cs">
+      <DependentUpon>202208080322094_add-four-tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208080403408_big-update-2.cs" />
+    <Compile Include="Migrations\202208080403408_big-update-2.designer.cs">
+      <DependentUpon>202208080403408_big-update-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208080711555_alter-status.cs" />
+    <Compile Include="Migrations\202208080711555_alter-status.designer.cs">
+      <DependentUpon>202208080711555_alter-status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208090636407_small-update.cs" />
+    <Compile Include="Migrations\202208090636407_small-update.designer.cs">
+      <DependentUpon>202208090636407_small-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208150730395_update.cs" />
+    <Compile Include="Migrations\202208150730395_update.designer.cs">
+      <DependentUpon>202208150730395_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208150848279_convert-status-type.cs" />
+    <Compile Include="Migrations\202208150848279_convert-status-type.designer.cs">
+      <DependentUpon>202208150848279_convert-status-type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208150923405_change-avatar.cs" />
+    <Compile Include="Migrations\202208150923405_change-avatar.designer.cs">
+      <DependentUpon>202208150923405_change-avatar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208160632346_merge-tos-and-security.cs" />
+    <Compile Include="Migrations\202208160632346_merge-tos-and-security.designer.cs">
+      <DependentUpon>202208160632346_merge-tos-and-security.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208160643403_add-title.cs" />
+    <Compile Include="Migrations\202208160643403_add-title.designer.cs">
+      <DependentUpon>202208160643403_add-title.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\AnnouncementRepository.cs" />
     <Compile Include="Repositories\AnnouncementUserRepository.cs" />
+    <Compile Include="Repositories\BlogCategoryRepository.cs" />
+    <Compile Include="Repositories\BlogRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\DistrictRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FunctionRepository.cs" />
     <Compile Include="Repositories\HomeSlideRepository.cs" />
@@ -114,10 +184,10 @@
     <Compile Include="Repositories\LevelRepository.cs" />
     <Compile Include="Repositories\PermissionRepository.cs" />
     <Compile Include="Repositories\ProvinceRepository.cs" />
+    <Compile Include="Repositories\PublicTextRepository.cs" />
     <Compile Include="Repositories\SalaryRangeRepository.cs" />
-    <Compile Include="Repositories\SecurityRepository.cs" />
+    <Compile Include="Repositories\ScaleRepository.cs" />
     <Compile Include="Repositories\SystemConfigRepository.cs" />
-    <Compile Include="Repositories\TermsOrServiceRepository.cs" />
     <Compile Include="Repositories\WelfareRepository.cs" />
     <Compile Include="Repositories\WelfareTypeRepository.cs" />
     <Compile Include="Repositories\WorkingTypeRepository.cs" />
@@ -165,6 +235,62 @@
     <EmbeddedResource Include="Migrations\202205261946173_alter-database.resx">
       <DependentUpon>202205261946173_alter-database.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206221648316_alter-job.resx">
+      <DependentUpon>202206221648316_alter-job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207270448516_add-technology.resx">
+      <DependentUpon>202207270448516_add-technology.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207270451114_delete-technology.resx">
+      <DependentUpon>202207270451114_delete-technology.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208020421046_alter-sec-and-tos.resx">
+      <DependentUpon>202208020421046_alter-sec-and-tos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208020758320_alter-security-and-tos.resx">
+      <DependentUpon>202208020758320_alter-security-and-tos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208040300263_alter-remove-title.resx">
+      <DependentUpon>202208040300263_alter-remove-title.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208080318068_big-update.resx">
+      <DependentUpon>202208080318068_big-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208080322094_add-four-tables.resx">
+      <DependentUpon>202208080322094_add-four-tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208080403408_big-update-2.resx">
+      <DependentUpon>202208080403408_big-update-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208080711555_alter-status.resx">
+      <DependentUpon>202208080711555_alter-status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208090636407_small-update.resx">
+      <DependentUpon>202208090636407_small-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208150730395_update.resx">
+      <DependentUpon>202208150730395_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208150848279_convert-status-type.resx">
+      <DependentUpon>202208150848279_convert-status-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208150923405_change-avatar.resx">
+      <DependentUpon>202208150923405_change-avatar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208160632346_merge-tos-and-security.resx">
+      <DependentUpon>202208160632346_merge-tos-and-security.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208160643403_add-title.resx">
+      <DependentUpon>202208160643403_add-title.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

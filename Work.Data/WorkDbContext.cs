@@ -22,9 +22,8 @@ namespace Work.Data
         public DbSet<Welfare> welfares { get; set; }
         public DbSet<Level> levels { get; set; }
         public DbSet<Province> provinces { get; set; }
-        public DbSet<Security> securities { get; set; }
+        public DbSet<PublicText> public_texts { get; set; }
         public DbSet<SystemConfig> system_configs { get; set; }
-        public DbSet<TermsOfService> terms_of_services { get; set; }
         public DbSet<Function> functions { set; get; }
         public DbSet<Permission> permissions { set; get; }
         public DbSet<WelfareType> welfare_types { get; set; }
@@ -34,7 +33,11 @@ namespace Work.Data
         public DbSet<IdentityUserRole> user_roles { set; get; }
         public DbSet<Announcement> announcements { set; get; }
         public DbSet<AnnouncementUser> announcement_users { set; get; }
-
+        public DbSet<Blog> blogs { get; set; }
+        public DbSet<BlogCategory> blog_categories { get; set; }
+        public DbSet<District> districts { get; set; }
+        public DbSet<Country> countries { get; set; }
+        public DbSet<Scale> scales { set; get; }
         public static WorkDbContext Create()
         {
             return new WorkDbContext();

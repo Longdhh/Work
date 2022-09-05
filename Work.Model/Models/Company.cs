@@ -38,13 +38,15 @@ namespace Work.Model.Models
         public string phone_number { get; set; }
         public long? followers { get; set; }
         public bool? is_featured { get; set; }
-        public long? province_id { get; set; }
-        public string address { get; set; }
+        public long? country_id { get; set; }
+        public long? scale_id { get; set; }
         public virtual ApplicationUser user { get; set; }
-
-        [ForeignKey("province_id")]
-        public virtual Province province { get; set; }
+        [ForeignKey("country_id")]
+        public virtual Country country { get; set; }
+        [ForeignKey("scale_id")]
+        public virtual Scale scale { get; set; }
 
         public virtual IEnumerable<Job> jobs { get; set; }
+        public virtual IEnumerable<Address> addresses { get; set; }
     }
 }

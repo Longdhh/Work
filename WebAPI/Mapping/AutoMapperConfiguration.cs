@@ -11,6 +11,8 @@ namespace WebAPI.Mapping
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<Category, CategoryViewModel>();
+                cfg.CreateMap<Blog, BlogViewModel>();
+                cfg.CreateMap<BlogCategory, BlogCategoryViewModel>();
                 cfg.CreateMap<HomeSlide, HomeSlideViewModel>();
                 cfg.CreateMap<JobCategory, JobCategoryViewModel>();
                 cfg.CreateMap<Welfare, WelfareViewModel>();
@@ -18,9 +20,8 @@ namespace WebAPI.Mapping
                 cfg.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
                 cfg.CreateMap<Level, LevelViewModel>();
                 cfg.CreateMap<Province, ProvinceViewModel>();
-                cfg.CreateMap<Security, SecurityViewModel>();
+                cfg.CreateMap<PublicText, PublicTextViewModel>();
                 cfg.CreateMap<ApplicationUser, ApplicationUserViewModel>();
-                cfg.CreateMap<TermsOfService, TermsOfServiceViewModel>();
                 cfg.CreateMap<WelfareType, WelfareTypeViewModel>();
                 cfg.CreateMap<WorkingType, WorkingTypeViewModel>();
                 cfg.CreateMap<SalaryRange, SalaryRangeViewModel>();

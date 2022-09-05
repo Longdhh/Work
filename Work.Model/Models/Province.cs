@@ -28,5 +28,7 @@ namespace Work.Model.Models
 
         public virtual IEnumerable<ApplicationUser> employees { get; set; }
         public virtual IEnumerable<Job> jobs { get; set; }
+        public virtual IEnumerable<Company> companies { get; set; }
+        public virtual IEnumerable<District> districts { get; set; }
     }
 }
